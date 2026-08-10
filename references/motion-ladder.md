@@ -119,6 +119,14 @@ tier 0; an unreachable fps floor demotes to tier 1.
 HTML-in-Canvas is confined to `lab.html` deliberately — it graduates to a
 real page when there is a real use for it, not because it exists.
 
+## Entrance animations and LCP
+
+An element at `opacity: 0` is not a Largest Contentful Paint candidate.
+Fading in a hero therefore defers LCP by the whole animation — measured
+on this site at 4.6s → 3.2s just from making the hero's entrance
+transform-only. If an entrance animation covers the LCP element, animate
+`transform` and leave opacity alone.
+
 ## Adding an engine
 
 Nothing above tier 1 is pinned by default — 23KB should not be mandatory
